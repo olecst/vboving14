@@ -71,7 +71,7 @@ Public Class Form1
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
         Dim tabell As New DataTable
-        tabell = sporring("Select * FROM Person")
+        tabell = sporring("SELECT * FROM Person ORDER BY Person_fornavn")
 
         Dim pid As String
         Dim fornavn As String
