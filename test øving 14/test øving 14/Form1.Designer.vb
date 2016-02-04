@@ -25,7 +25,6 @@ Partial Class Form1
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
@@ -34,20 +33,23 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ListBox1
         '
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 16
-        Me.ListBox1.Location = New System.Drawing.Point(420, 70)
+        Me.ListBox1.Location = New System.Drawing.Point(492, 70)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(366, 276)
         Me.ListBox1.TabIndex = 35
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(99, 239)
+        Me.Button5.Location = New System.Drawing.Point(222, 191)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(99, 42)
         Me.Button5.TabIndex = 34
@@ -56,25 +58,16 @@ Partial Class Form1
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(222, 304)
+        Me.Button4.Location = New System.Drawing.Point(99, 239)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(99, 47)
         Me.Button4.TabIndex = 33
-        Me.Button4.Text = "Hent data"
+        Me.Button4.Text = "List ut alle"
         Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(99, 304)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(99, 47)
-        Me.Button3.TabIndex = 32
-        Me.Button3.Text = "Legg inn data"
-        Me.Button3.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(222, 191)
+        Me.Button2.Location = New System.Drawing.Point(759, 365)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(99, 42)
         Me.Button2.TabIndex = 31
@@ -139,15 +132,44 @@ Partial Class Form1
         Me.Label1.TabIndex = 24
         Me.Label1.Text = "Brukernavn"
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(327, 191)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(131, 17)
+        Me.Label4.TabIndex = 36
+        Me.Label4.Text = "<--trykk kun 1 gang"
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(99, 297)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(99, 49)
+        Me.Button3.TabIndex = 37
+        Me.Button3.Text = "Søk etter person"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(222, 297)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(99, 49)
+        Me.Button6.TabIndex = 38
+        Me.Button6.Text = "Søk etter epost"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(794, 419)
+        Me.ClientSize = New System.Drawing.Size(895, 419)
+        Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox3)
@@ -166,7 +188,6 @@ Partial Class Form1
     Friend WithEvents ListBox1 As ListBox
     Friend WithEvents Button5 As Button
     Friend WithEvents Button4 As Button
-    Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents TextBox3 As TextBox
@@ -175,4 +196,7 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button6 As Button
 End Class

@@ -5,7 +5,10 @@ Public Class Form1
     Public brukernavn As String
     Public passord As String
     Public servernavn As String
-
+    Dim pid As String
+    Dim fornavn As String
+    Dim etternavn As String
+    Dim epost As String
     Public oppkobling As New MySqlConnection
 
     Private Function sporring(ByVal sql As String) As DataTable
@@ -20,10 +23,9 @@ Public Class Form1
             da.SelectCommand = kommando
             da.Fill(tabell)
 
-            MessageBox.Show("Tabell opprettet.")
             oppkobling.Close()
         Catch feil As Exception
-            MessageBox.Show("You fail at life. Fordi " & feil.Message)
+            MessageBox.Show("Noe gikk galt: " & feil.Message)
         End Try
 
         Return tabell
@@ -59,11 +61,11 @@ Public Class Form1
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        sporring("CREATE TABLE Person (Person_id int, Person_fornavn char(25), Person_etternavn char(25))")
-        sporring("INSERT INTO Person (Person_id, Person_fornavn, person_etternavn) VALUES (1, 'Ole', 'Strøm')")
-        sporring("INSERT INTO Person (Person_id, Person_fornavn, person_etternavn) VALUES (2, 'Bjørner', 'Gråberg')")
-        sporring("INSERT INTO Person (Person_id, Person_fornavn, person_etternavn) VALUES (3, 'Eric', 'Veliyulin')")
-        sporring("INSERT INTO Person (Person_id, Person_fornavn, person_etternavn) VALUES (4, 'Jørn', 'Hella')")
+        sporring("CREATE TABLE Person (Person_id int, Person_fornavn char(25), Person_etternavn char(25), Person_epost char(25))")
+        sporring("INSERT INTO Person (Person_id, Person_fornavn, person_etternavn, Person_epost) VALUES (1, 'Ole', 'Strøm', 'ole@ole.com')")
+        sporring("INSERT INTO Person (Person_id, Person_fornavn, person_etternavn, Person_epost) VALUES (2, 'Bjørner', 'Gråberg', 'bjorner@bjorner.com')")
+        sporring("INSERT INTO Person (Person_id, Person_fornavn, person_etternavn, Person_epost) VALUES (3, 'Eric', 'Veliyulin', 'eric@eric.com')")
+        sporring("INSERT INTO Person (Person_id, Person_fornavn, person_etternavn, Person_epost) VALUES (4, 'Jørn', 'Hella', 'jorn@jorn.com')")
     End Sub
 
 
@@ -73,9 +75,7 @@ Public Class Form1
         Dim tabell As New DataTable
         tabell = sporring("SELECT * FROM Person ORDER BY Person_fornavn")
 
-        Dim pid As String
-        Dim fornavn As String
-        Dim etternavn As String
+
 
         ListBox1.Items.Clear()
 
@@ -83,7 +83,47 @@ Public Class Form1
             pid = rad("Person_id")
             fornavn = rad("Person_fornavn")
             etternavn = rad("Person_etternavn")
-            ListBox1.Items.Add(pid & " " & fornavn & " " & etternavn)
+            epost = rad("Person_epost")
+            ListBox1.Items.Add(pid & " " & fornavn & " " & etternavn & " " & epost)
         Next
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim personsok As String = InputBox("Hvem vil du søke etter?")
+
+
+        Dim tabell As New DataTable
+        tabell = sporring("SELECT * FROM Person WHERE Person_fornavn = '" & personsok & "'")
+
+        ListBox1.Items.Clear()
+
+        For Each rad As DataRow In tabell.Rows
+            pid = rad("Person_id")
+            fornavn = rad("Person_fornavn")
+            etternavn = rad("Person_etternavn")
+            epost = rad("Person_epost")
+            ListBox1.Items.Add(pid & " " & fornavn & " " & etternavn & " " & epost)
+        Next
+        oppkobling.Close()
+
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Dim epostsok As String = InputBox("Hvem vil du søke etter?")
+
+
+        Dim tabell As New DataTable
+        tabell = sporring("SELECT * FROM Person WHERE Person_epost LIKE '%" & epostsok & "%'")
+
+        ListBox1.Items.Clear()
+
+        For Each rad As DataRow In tabell.Rows
+            pid = rad("Person_id")
+            fornavn = rad("Person_fornavn")
+            etternavn = rad("Person_etternavn")
+            epost = rad("Person_epost")
+            ListBox1.Items.Add(pid & " " & fornavn & " " & etternavn & " " & epost)
+        Next
+        oppkobling.Close()
     End Sub
 End Class
