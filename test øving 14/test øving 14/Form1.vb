@@ -125,5 +125,6 @@ Public Class Form1
             ListBox1.Items.Add(pid & " " & fornavn & " " & etternavn & " " & epost)
         Next
         oppkobling.Close()
+
     End Sub
 End Class
